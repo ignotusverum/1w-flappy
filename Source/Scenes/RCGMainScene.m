@@ -17,6 +17,8 @@
 @property (nonatomic, weak) CCNode * ground2Node;
 @property (nonatomic, strong) NSArray * arrayOfGroundNodes;
 
+@property (nonatomic, assign) NSTimeInterval timeSinceTouch;
+
 @end
 
 @implementation RCGMainScene
@@ -44,6 +46,7 @@
     [self updateGroundUI];
     
     [self updateHeroVelocity];
+    [self updateHeroRotationWithDelta:delta];
 }
 
 
@@ -55,7 +58,7 @@
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
         
         if (groundScreenPosition.x <= (-1 * groundNode.contentSize.width)) {
-            groundNode.position = ccp(groundNode.position.x + 2 * groundNode.contentSize.width, groundNode.position.y);
+            groundNode.position = ccp(groundNode.position.x + 2.0f * groundNode.contentSize.width, groundNode.position.y);
         }
     }
 }
@@ -66,7 +69,10 @@
 
 - (void) touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
-    [self.heroSprite.physicsBody applyImpulse:ccp(0, 400.0)];
+    [self.heroSprite.physicsBody applyImpulse:ccp(0, 400.0f)];
+    [self.heroSprite.physicsBody applyAngularImpulse:1000.0f];
+    
+    self.timeSinceTouch = 0.0f;
 }
 
 
@@ -76,7 +82,24 @@
 - (void) updateHeroVelocity
 {
     CGFloat speedVelocity = clampf(self.heroSprite.physicsBody.velocity.y, -1 * MAXFLOAT, 200.0f);
-    self.heroSprite.physicsBody.velocity = ccp(0, speedVelocity);
+    self.heroSprite.physicsBody.velocity = ccp(0.0f, speedVelocity);
+}
+
+
+- (void) updateHeroRotationWithDelta:(CCTime)delta
+{
+    self.timeSinceTouch += delta;
+    self.heroSprite.rotation = clampf(self.heroSprite.rotation, -30.0f, 90.0f);
+    
+    if (self.heroSprite.physicsBody.allowsRotation) {
+        CGFloat angularVelocity = clampf(self.heroSprite.physicsBody.angularVelocity, -2.0f, 1.0f);
+        
+        self.heroSprite.physicsBody.angularVelocity = angularVelocity;
+    }
+    
+    if (self.timeSinceTouch > 0.5f) {
+        [self.heroSprite.physicsBody applyAngularImpulse:-40000.f * delta];
+    }
 }
 
 
