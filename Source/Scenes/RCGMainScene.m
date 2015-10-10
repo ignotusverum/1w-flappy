@@ -11,6 +11,7 @@
 @interface RCGMainScene ()
 
 @property (nonatomic, weak) CCSprite * heroSprite;
+@property (nonatomic, weak) CCPhysicsNode * mainPhysicsNode;
 
 @end
 
@@ -20,6 +21,7 @@
 - (void) update:(CCTime)delta
 {
     self.heroSprite.position = ccp(self.heroSprite.position.x + delta * RCGScrollSpeed, self.heroSprite.position.y);
+    self.mainPhysicsNode.position = ccp(self.mainPhysicsNode.position.x - delta * RCGScrollSpeed, self.mainPhysicsNode.position.y);
 }
 
 
