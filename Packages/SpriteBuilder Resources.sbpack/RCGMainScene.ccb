@@ -555,7 +555,7 @@
 						<key>displayName</key>
 						<string>CCBFile</string>
 						<key>memberVarAssignmentName</key>
-						<string></string>
+						<string>heroSprite</string>
 						<key>memberVarAssignmentType</key>
 						<integer>1</integer>
 						<key>physicsBody</key>
@@ -669,6 +669,8 @@
 								<string>RCGHero.ccb</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 				</array>
 				<key>customClass</key>
@@ -760,8 +762,6 @@
 						<real>0.5</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

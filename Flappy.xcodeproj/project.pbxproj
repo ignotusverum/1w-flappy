@@ -36,6 +36,7 @@
 		B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B4117B978D7009739AE /* CoreText.framework */; };
 		B8460FAC1BC97C0900EF4F62 /* RCGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8460FAB1BC97C0900EF4F62 /* RCGAppDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		B8460FAF1BC97C5B00EF4F62 /* RCGMainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B8460FAE1BC97C5B00EF4F62 /* RCGMainScene.m */; settings = {ASSET_TAGS = (); }; };
+		B8460FB61BC97D9100EF4F62 /* RCGConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B8460FB51BC97D9100EF4F62 /* RCGConstants.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,8 @@
 		B8460FAB1BC97C0900EF4F62 /* RCGAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCGAppDelegate.m; path = Source/RCGAppDelegate.m; sourceTree = "<group>"; };
 		B8460FAD1BC97C5B00EF4F62 /* RCGMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCGMainScene.h; path = Source/Scenes/RCGMainScene.h; sourceTree = "<group>"; };
 		B8460FAE1BC97C5B00EF4F62 /* RCGMainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCGMainScene.m; path = Source/Scenes/RCGMainScene.m; sourceTree = "<group>"; };
+		B8460FB41BC97D9100EF4F62 /* RCGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCGConstants.h; path = Source/Utils/RCGConstants.h; sourceTree = "<group>"; };
+		B8460FB51BC97D9100EF4F62 /* RCGConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCGConstants.m; path = Source/Utils/RCGConstants.m; sourceTree = "<group>"; };
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -253,6 +256,7 @@
 				B8460FAB1BC97C0900EF4F62 /* RCGAppDelegate.m */,
 				D352B48019EC608A00829775 /* MetalShaders */,
 				B8460FB01BC97C5D00EF4F62 /* Scenes */,
+				B8460FB71BC97D9400EF4F62 /* Utils */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -345,6 +349,15 @@
 				B8460FAE1BC97C5B00EF4F62 /* RCGMainScene.m */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		B8460FB71BC97D9400EF4F62 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B8460FB41BC97D9100EF4F62 /* RCGConstants.h */,
+				B8460FB51BC97D9100EF4F62 /* RCGConstants.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,6 +520,7 @@
 			files = (
 				B8460FAF1BC97C5B00EF4F62 /* RCGMainScene.m in Sources */,
 				B8460FAC1BC97C0900EF4F62 /* RCGAppDelegate.m in Sources */,
+				B8460FB61BC97D9100EF4F62 /* RCGConstants.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

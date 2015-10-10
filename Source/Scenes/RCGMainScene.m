@@ -8,6 +8,20 @@
 
 #import "RCGMainScene.h"
 
+@interface RCGMainScene ()
+
+@property (nonatomic, weak) CCSprite * heroSprite;
+
+@end
+
 @implementation RCGMainScene
+
+
+- (void) update:(CCTime)delta
+{
+    NSLog(@"speed is %f",RCGScrollSpeed);
+    self.heroSprite.position = ccp(self.heroSprite.position.x + delta * RCGScrollSpeed, self.heroSprite.position.y);
+}
+
 
 @end
