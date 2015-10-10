@@ -98,7 +98,7 @@
     }
     
     if (self.timeSinceTouch > 0.5f) {
-        [self.heroSprite.physicsBody applyAngularImpulse:-40000.f * delta];
+        [self.heroSprite.physicsBody applyAngularImpulse:-4000.f * delta];
     }
 }
 
