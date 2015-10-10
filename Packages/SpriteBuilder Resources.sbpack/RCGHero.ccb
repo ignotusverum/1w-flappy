@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>1</integer>
+	<integer>7</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -232,7 +232,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>FlappyFlyArtPack/fly2.png</string>
+					<string>FlappyFlyArtPack/fly1.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -243,7 +243,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string></string>
+					<string>FlappyFlyArtPack/fly1.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -268,8 +268,6 @@
 				<array/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 		<key>seqExpanded</key>
 		<true/>
 	</dict>
@@ -331,7 +329,7 @@
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>394.903076171875</real>
+			<real>328.16152954101562</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 			<key>soundChannel</key>

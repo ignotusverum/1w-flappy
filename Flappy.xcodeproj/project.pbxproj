@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -384,6 +384,7 @@
 		B77F1B2617B978D7009739AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = RCG;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Apportable;
 				TargetAttributes = {
@@ -397,7 +398,7 @@
 				};
 			};
 			buildConfigurationList = B77F1B2917B978D7009739AE /* Build configuration list for PBXProject "Flappy" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
