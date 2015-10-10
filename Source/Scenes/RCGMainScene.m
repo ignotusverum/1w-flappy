@@ -19,7 +19,6 @@
 
 - (void) update:(CCTime)delta
 {
-    NSLog(@"speed is %f",RCGScrollSpeed);
     self.heroSprite.position = ccp(self.heroSprite.position.x + delta * RCGScrollSpeed, self.heroSprite.position.y);
 }
 
