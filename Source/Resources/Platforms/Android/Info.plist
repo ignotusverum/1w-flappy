@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>Flappy</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.cocos2d.Flappy</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
