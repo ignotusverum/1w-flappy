@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>21CC41A417DB7D1300201DDC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A4036C319DE3DF6007B6E8F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A59495A19E38BE500F65F90</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>83409DCD19D5B65B004B7EB9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

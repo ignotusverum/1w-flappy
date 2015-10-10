@@ -5,7 +5,7 @@
 	<key>cocos2dUpdateIgnoredVersions</key>
 	<array/>
 	<key>defaultOrientation</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>designTarget</key>
 	<integer>0</integer>
 	<key>deviceOrientationLandscapeLeft</key>
@@ -39,7 +39,7 @@
 	<key>publishDirectoryAndroid</key>
 	<string>Source/Resources/Published-Android</string>
 	<key>publishEnabledAndroid</key>
-	<true/>
+	<false/>
 	<key>publishEnablediPhone</key>
 	<true/>
 	<key>publishEnvironment</key>
@@ -57,13 +57,13 @@
 	<key>publishResolution_ios_phonehd</key>
 	<true/>
 	<key>publishResolution_ios_tablet</key>
-	<true/>
+	<false/>
 	<key>publishResolution_ios_tablethd</key>
-	<true/>
+	<false/>
 	<key>publishToZipFile</key>
 	<false/>
 	<key>resourceAutoScaleFactor</key>
-	<integer>4</integer>
+	<integer>2</integer>
 	<key>resourcePaths</key>
 	<array>
 		<dict>
