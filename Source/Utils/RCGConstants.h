@@ -9,3 +9,6 @@
 #import <Foundation/Foundation.h>
 
 extern CGFloat const RCGScrollSpeed;
+
+extern CGFloat const RCGFirstObstaclePos;
+extern CGFloat const RCGDistanceBetweenObstacles;
