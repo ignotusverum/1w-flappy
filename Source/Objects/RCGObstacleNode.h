@@ -8,7 +8,7 @@
 
 #import "CCNode.h"
 
-@interface RCGObstacle : CCNode
+@interface RCGObstacleNode : CCNode
 
 - (void) setupRandomPosition;
 
