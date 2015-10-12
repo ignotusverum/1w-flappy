@@ -571,7 +571,7 @@
 							<key>collisionMask</key>
 							<array/>
 							<key>collisionType</key>
-							<string></string>
+							<string>RCGHero</string>
 							<key>cornerRadius</key>
 							<real>0.0</real>
 							<key>density</key>
@@ -669,6 +669,8 @@
 								<string>RCGHero.ccb</string>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
