@@ -8,6 +8,9 @@
 
 #import "RCGMainScene.h"
 
+// Nodes
+#import "RCGObstacle.h"
+
 @interface RCGMainScene ()
 
 @property (nonatomic, weak) CCSprite * heroSprite;
@@ -86,8 +89,11 @@
         previousObstaclePos = RCGFirstObstaclePos;
     }
     
-    CCNode * obstacle = [CCBReader load:@"RCGObstacle"];
+    RCGObstacle * obstacle = (RCGObstacle *)[CCBReader load:@"RCGObstacle"];
     obstacle.position = ccp(previousObstaclePos + RCGDistanceBetweenObstacles, 0);
+    
+    [obstacle setupRandomPosition];
+    
     [self.mainPhysicsNode addChild:obstacle];
     [self.obstacleNodesArray addObject:obstacle];
 }

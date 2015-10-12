@@ -8,8 +8,6 @@
 
 #import "CCNode.h"
 
-#import "RCGConstants.h"
-
 @interface RCGMainScene : CCNode
 
 @end

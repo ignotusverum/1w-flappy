@@ -37,6 +37,7 @@
 		B8460FAC1BC97C0900EF4F62 /* RCGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B8460FAB1BC97C0900EF4F62 /* RCGAppDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		B8460FAF1BC97C5B00EF4F62 /* RCGMainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B8460FAE1BC97C5B00EF4F62 /* RCGMainScene.m */; settings = {ASSET_TAGS = (); }; };
 		B8460FB61BC97D9100EF4F62 /* RCGConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = B8460FB51BC97D9100EF4F62 /* RCGConstants.m */; settings = {ASSET_TAGS = (); }; };
+		B8460FC61BCB347200EF4F62 /* RCGObstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = B8460FC51BCB347200EF4F62 /* RCGObstacle.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,8 @@
 		B8460FAE1BC97C5B00EF4F62 /* RCGMainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCGMainScene.m; path = Source/Scenes/RCGMainScene.m; sourceTree = "<group>"; };
 		B8460FB41BC97D9100EF4F62 /* RCGConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCGConstants.h; path = Source/Utils/RCGConstants.h; sourceTree = "<group>"; };
 		B8460FB51BC97D9100EF4F62 /* RCGConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCGConstants.m; path = Source/Utils/RCGConstants.m; sourceTree = "<group>"; };
+		B8460FC41BCB347200EF4F62 /* RCGObstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCGObstacle.h; path = Source/Objects/RCGObstacle.h; sourceTree = "<group>"; };
+		B8460FC51BCB347200EF4F62 /* RCGObstacle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCGObstacle.m; path = Source/Objects/RCGObstacle.m; sourceTree = "<group>"; };
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,6 +260,7 @@
 				D352B48019EC608A00829775 /* MetalShaders */,
 				B8460FB01BC97C5D00EF4F62 /* Scenes */,
 				B8460FB71BC97D9400EF4F62 /* Utils */,
+				B8460FCB1BCB347500EF4F62 /* Objects */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -358,6 +362,15 @@
 				B8460FB51BC97D9100EF4F62 /* RCGConstants.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		B8460FCB1BCB347500EF4F62 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B8460FC41BCB347200EF4F62 /* RCGObstacle.h */,
+				B8460FC51BCB347200EF4F62 /* RCGObstacle.m */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -520,6 +533,7 @@
 			files = (
 				B8460FAF1BC97C5B00EF4F62 /* RCGMainScene.m in Sources */,
 				B8460FAC1BC97C0900EF4F62 /* RCGAppDelegate.m in Sources */,
+				B8460FC61BCB347200EF4F62 /* RCGObstacle.m in Sources */,
 				B8460FB61BC97D9100EF4F62 /* RCGConstants.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 			);
