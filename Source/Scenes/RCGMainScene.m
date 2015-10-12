@@ -40,11 +40,23 @@
     self.userInteractionEnabled = YES;
     
     self.groundNodesArray = @[self.ground1Node, self.ground2Node];
+ 
+    [self drawingOrder];
     
     self.obstacleNodesArray = [NSMutableArray new];
     [self spawnNewObstacles];
     [self spawnNewObstacles];
     [self spawnNewObstacles];
+}
+
+
+- (void) drawingOrder
+{
+    for (CCNode * groundNode in self.groundNodesArray) {
+        groundNode.zOrder = RCGDrawingOrderGround;
+    }
+    
+    self.heroSprite.zOrder = RCGDrawingOrderHero;
 }
 
 
@@ -90,6 +102,8 @@
     }
     
     RCGObstacle * obstacle = (RCGObstacle *)[CCBReader load:@"RCGObstacle"];
+    
+    obstacle.zOrder = RCGDrawingOrderObstacle;
     obstacle.position = ccp(previousObstaclePos + RCGDistanceBetweenObstacles, 0);
     
     [obstacle setupRandomPosition];

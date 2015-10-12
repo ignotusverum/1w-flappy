@@ -51,7 +51,7 @@
 				<key>displayName</key>
 				<string>pipe_top</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>topObject</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -62,7 +62,7 @@
 						<key>type</key>
 						<string>StringSimple</string>
 						<key>value</key>
-						<string></string>
+						<string>topObject</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -146,6 +146,8 @@
 						<array/>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -159,7 +161,7 @@
 				<key>displayName</key>
 				<string>pipe_bottom</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>bottomObject</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -170,7 +172,7 @@
 						<key>type</key>
 						<string>StringSimple</string>
 						<key>value</key>
-						<string></string>
+						<string>bottomObject</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -404,8 +406,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
