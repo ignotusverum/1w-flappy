@@ -17,4 +17,4 @@ CGFloat const RCGPipeDistance = 142.f;
 CGFloat const RCGMinimumYPositionTopPipe = 128.f;
 CGFloat const RCGMaximumYPositionBottomPipe = 440.f;
 
-CGFloat const maximumYPositionTopPipe = RCGMaximumYPositionBottomPipe - RCGPipeDistance;
+CGFloat const RCGMaximumYPositionTopPipe = RCGMaximumYPositionBottomPipe - RCGPipeDistance;

@@ -20,7 +20,7 @@
 - (void) setupRandomPosition
 {
     CGFloat randomFloat = ((double)arc4random() / ARC4RANDOM_MAX);
-    CGFloat range = (RCGMaximumYPositionBottomPipe - RCGMinimumYPositionTopPipe);
+    CGFloat range = (RCGMaximumYPositionTopPipe - RCGMinimumYPositionTopPipe);
     
     self.topObject.position = ccp(self.topObject.position.x, RCGMinimumYPositionTopPipe + (randomFloat * range));
     self.bottomObject.position = ccp(self.bottomObject.position.x, self.topObject.position.y + RCGPipeDistance);

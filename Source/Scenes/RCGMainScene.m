@@ -41,12 +41,13 @@
     
     self.groundNodesArray = @[self.ground1Node, self.ground2Node];
  
-    [self drawingOrder];
-    
+
     self.obstacleNodesArray = [NSMutableArray new];
     [self spawnNewObstacles];
     [self spawnNewObstacles];
     [self spawnNewObstacles];
+    
+    [self drawingOrder];
 }
 
 
