@@ -54,9 +54,6 @@
     self.groundNodesArray = @[self.ground1Node, self.ground2Node];
  
     self.obstacleNodesArray = [NSMutableArray new];
-    [self spawnNewObstacles];
-    [self spawnNewObstacles];
-    [self spawnNewObstacles];
     
     [self drawingOrder];
 }
@@ -88,6 +85,12 @@
     
     [self updateHeroVelocity];
     [self updateHeroRotationWithDelta:delta];
+    
+    [self updateObstacles];
+    
+    [self spawnNewObstacle];
+    [self spawnNewObstacle];
+    [self spawnNewObstacle];
 }
 
 
@@ -137,7 +140,7 @@
 #pragma mark - Obstacles logic
 
 
-- (void) spawnNewObstacles
+- (void) spawnNewObstacle
 {
     CCNode * previousObstacle = [self.obstacleNodesArray lastObject];
     CGFloat previousObstaclePos = previousObstacle.position.x;
@@ -155,6 +158,34 @@
     
     [self.mainPhysicsNode addChild:obstacle];
     [self.obstacleNodesArray addObject:obstacle];
+}
+
+
+- (void) updateObstacles
+{
+    NSMutableArray * offScreenObstacleNodes = nil;
+    
+    for (CCNode * obstacleNode in self.obstacleNodesArray) {
+        
+        CGPoint obstacleWorldPosition = [self.mainPhysicsNode convertToWorldSpace:obstacleNode.position];
+        CGPoint obstacleScreenPosition = [self convertToNodeSpace:obstacleWorldPosition];
+        
+        if (obstacleScreenPosition.x < - obstacleNode.contentSize.width) {
+            if (!offScreenObstacleNodes) {
+                offScreenObstacleNodes = [NSMutableArray new];
+            }
+            
+            [offScreenObstacleNodes addObject:obstacleNode];
+        }
+    }
+    
+    for (CCNode * obstacleNodeToRemove in offScreenObstacleNodes) {
+        
+        [obstacleNodeToRemove removeFromParent];
+        [self.obstacleNodesArray removeObject:obstacleNodeToRemove];
+        
+        [self spawnNewObstacle];
+    }
 }
 
 
