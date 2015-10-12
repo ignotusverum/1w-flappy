@@ -8,16 +8,24 @@
 
 #import "RCGMainScene.h"
 
+// Nodes
+#import "RCGObstacle.h"
+
 @interface RCGMainScene ()
 
 @property (nonatomic, weak) CCSprite * heroSprite;
 @property (nonatomic, weak) CCPhysicsNode * mainPhysicsNode;
 
+// Ground logic
 @property (nonatomic, weak) CCNode * ground1Node;
 @property (nonatomic, weak) CCNode * ground2Node;
-@property (nonatomic, strong) NSArray * arrayOfGroundNodes;
+@property (nonatomic, strong) NSArray * groundNodesArray;
 
+// Interaction logic
 @property (nonatomic, assign) NSTimeInterval timeSinceTouch;
+
+// Obstacles logic
+@property (nonatomic, strong) NSMutableArray * obstacleNodesArray;
 
 @end
 
@@ -31,7 +39,25 @@
 {
     self.userInteractionEnabled = YES;
     
-    self.arrayOfGroundNodes = @[self.ground1Node, self.ground2Node];
+    self.groundNodesArray = @[self.ground1Node, self.ground2Node];
+ 
+
+    self.obstacleNodesArray = [NSMutableArray new];
+    [self spawnNewObstacles];
+    [self spawnNewObstacles];
+    [self spawnNewObstacles];
+    
+    [self drawingOrder];
+}
+
+
+- (void) drawingOrder
+{
+    for (CCNode * groundNode in self.groundNodesArray) {
+        groundNode.zOrder = RCGDrawingOrderGround;
+    }
+    
+    self.heroSprite.zOrder = RCGDrawingOrderHero;
 }
 
 
@@ -52,7 +78,7 @@
 
 - (void) updateGroundUI
 {
-    for (CCNode * groundNode in self.arrayOfGroundNodes) {
+    for (CCNode * groundNode in self.groundNodesArray) {
         CGPoint groundWorldPosition = [self.mainPhysicsNode convertToWorldSpace:groundNode.position];
         
         CGPoint groundScreenPosition = [self convertToNodeSpace:groundWorldPosition];
@@ -61,6 +87,30 @@
             groundNode.position = ccp(groundNode.position.x + 2.0f * groundNode.contentSize.width, groundNode.position.y);
         }
     }
+}
+
+
+#pragma mark - Obstacles logic
+
+
+- (void) spawnNewObstacles
+{
+    CCNode * previousObstacle = [self.obstacleNodesArray lastObject];
+    CGFloat previousObstaclePos = previousObstacle.position.x;
+    
+    if (!previousObstacle) {
+        previousObstaclePos = RCGFirstObstaclePos;
+    }
+    
+    RCGObstacle * obstacle = (RCGObstacle *)[CCBReader load:@"RCGObstacle"];
+    
+    obstacle.zOrder = RCGDrawingOrderObstacle;
+    obstacle.position = ccp(previousObstaclePos + RCGDistanceBetweenObstacles, 0);
+    
+    [obstacle setupRandomPosition];
+    
+    [self.mainPhysicsNode addChild:obstacle];
+    [self.obstacleNodesArray addObject:obstacle];
 }
 
 
