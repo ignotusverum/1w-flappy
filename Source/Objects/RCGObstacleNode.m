@@ -6,28 +6,30 @@
 //  Copyright © 2015 Apportable. All rights reserved.
 //
 
-#import "RCGObstacle.h"
+#import "RCGObstacleNode.h"
 
-@interface RCGObstacle ()
+@interface RCGObstacleNode ()
 
 @property (nonatomic, weak) CCNode * topObject;
 @property (nonatomic, weak) CCNode * bottomObject;
 
 @end
 
-@implementation RCGObstacle
+@implementation RCGObstacleNode
 
-#pragma mark - Scene init logic
+
+#pragma mark - Node init logic
 
 
 - (void) didLoadFromCCB
 {
-    self.topObject.physicsBody.collisionType = self.bottomObject.physicsBody.collisionType = @"RCGLevel";
     self.topObject.physicsBody.sensor = self.bottomObject.physicsBody.sensor = YES;
+    self.topObject.physicsBody.collisionType = self.bottomObject.physicsBody.collisionType = @"RCGLevel";
 }
 
 
 #pragma mark - Position logic
+
 
 - (void) setupRandomPosition
 {

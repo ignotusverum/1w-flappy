@@ -9,10 +9,11 @@
 #import "RCGMainScene.h"
 
 // Nodes
-#import "RCGObstacle.h"
+#import "RCGObstacleNode.h"
 
 @interface RCGMainScene () <CCPhysicsCollisionDelegate>
 
+@property (nonatomic, weak) CCLabelTTF * scoreLabel;
 
 @property (nonatomic, weak) CCSprite * heroSprite;
 @property (nonatomic, weak) CCPhysicsNode * mainPhysicsNode;
@@ -33,6 +34,8 @@
 
 // Game Logic
 @property (nonatomic, assign) BOOL isGameOver;
+
+@property (nonatomic, assign) NSInteger score;
 @property (nonatomic, assign) CGFloat currentScrollSpeed;
 
 @end
@@ -143,7 +146,7 @@
         previousObstaclePos = RCGFirstObstaclePos;
     }
     
-    RCGObstacle * obstacle = (RCGObstacle *)[CCBReader load:@"RCGObstacle"];
+    RCGObstacleNode * obstacle = (RCGObstacleNode *)[CCBReader load:@"RCGObstacleNode"];
     
     obstacle.zOrder = RCGDrawingOrderObstacle;
     obstacle.position = ccp(previousObstaclePos + RCGDistanceBetweenObstacles, 0);
@@ -206,12 +209,23 @@
 }
 
 
-#pragma mark - Collision delegate
+#pragma mark - Collision delegates
 
 
 - (BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair RCGHero:(CCNode *)RCGHero RCGLevel:(CCNode *)RCGLevel
 {
     [self gameOver];
+    return TRUE;
+}
+
+
+-(BOOL)ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair RCGHero:(CCNode *)RCGHero RCGGoal:(CCNode *)RCGGoal
+{
+    [RCGGoal removeFromParent];
+    
+    self.score++;
+    self.scoreLabel.string = [NSString stringWithFormat:@"%li", (long)self.score];
+    
     return TRUE;
 }
 
