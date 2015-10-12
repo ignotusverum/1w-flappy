@@ -13,6 +13,7 @@
 
 @interface RCGMainScene () <CCPhysicsCollisionDelegate>
 
+
 @property (nonatomic, weak) CCSprite * heroSprite;
 @property (nonatomic, weak) CCPhysicsNode * mainPhysicsNode;
 
@@ -26,6 +27,13 @@
 
 // Obstacles logic
 @property (nonatomic, strong) NSMutableArray * obstacleNodesArray;
+
+// Buttons
+@property (nonatomic, strong) CCButton * restartButton;
+
+// Game Logic
+@property (nonatomic, assign) BOOL isGameOver;
+@property (nonatomic, assign) CGFloat currentScrollSpeed;
 
 @end
 
@@ -60,6 +68,8 @@
     
     self.heroSprite.zOrder = RCGDrawingOrderHero;
     self.heroSprite.physicsBody.collisionType = @"RCGHero";
+    
+    self.currentScrollSpeed = RCGScrollSpeed;
 }
 
 
@@ -68,8 +78,8 @@
 
 - (void) update:(CCTime)delta
 {
-    self.heroSprite.position = ccp(self.heroSprite.position.x + delta * RCGScrollSpeed, self.heroSprite.position.y);
-    self.mainPhysicsNode.position = ccp(self.mainPhysicsNode.position.x - delta * RCGScrollSpeed, self.mainPhysicsNode.position.y);
+    self.heroSprite.position = ccp(self.heroSprite.position.x + delta * self.currentScrollSpeed, self.heroSprite.position.y);
+    self.mainPhysicsNode.position = ccp(self.mainPhysicsNode.position.x - delta * self.currentScrollSpeed, self.mainPhysicsNode.position.y);
     
     [self updateGroundUI];
     
@@ -88,6 +98,35 @@
         if (groundScreenPosition.x <= (-1 * groundNode.contentSize.width)) {
             groundNode.position = ccp(groundNode.position.x + 2.0f * groundNode.contentSize.width, groundNode.position.y);
         }
+    }
+}
+
+
+#pragma mark - Game logic
+
+
+- (void) gameOver
+{
+    if (!self.isGameOver) {
+        
+        self.currentScrollSpeed = 0;
+        self.isGameOver = YES;
+        
+        self.restartButton.visible = YES;
+        
+        [self.heroSprite stopAllActions];
+        self.heroSprite.rotation = 90.0f;
+        self.heroSprite.physicsBody.allowsRotation = NO;
+        
+        CCActionMoveBy * moveBy = [CCActionMoveBy actionWithDuration:0.2f position:ccp(-2, 2)];
+        
+        CCActionInterval * reverseMovement = [moveBy reverse];
+        
+        CCActionSequence * shakeSequence = [CCActionSequence actionWithArray:@[moveBy, reverseMovement]];
+        
+        CCActionEaseBounce * bounce = [CCActionEaseBounce actionWithAction:shakeSequence];
+        
+        [self runAction:bounce];
     }
 }
 
@@ -121,10 +160,22 @@
 
 - (void) touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event
 {
-    [self.heroSprite.physicsBody applyImpulse:ccp(0, 400.0f)];
-    [self.heroSprite.physicsBody applyAngularImpulse:1000.0f];
-    
-    self.timeSinceTouch = 0.0f;
+    if (!self.isGameOver) {
+        [self.heroSprite.physicsBody applyImpulse:ccp(0, 400.0f)];
+        [self.heroSprite.physicsBody applyAngularImpulse:1000.0f];
+
+        self.timeSinceTouch = 0.0f;
+    }
+}
+
+
+#pragma mark - Actions
+
+
+- (void) restartButtonPressed
+{
+    CCScene * mainScene = [CCBReader loadAsScene:@"RCGMainScene"];
+    [[CCDirector sharedDirector] replaceScene:mainScene];
 }
 
 
@@ -158,24 +209,9 @@
 #pragma mark - Collision delegate
 
 
-- (BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair typeA:(CCNode *)nodeA typeB:(CCNode *)nodeB
-{
-    NSLog(@"Game Over");
-    return TRUE;
-}
-
-
-- (BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair hero:(CCNode *)hero level:(CCNode *)level
-{
-    NSLog(@"Game Over");
-    return TRUE;
-}
-
-
 - (BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair RCGHero:(CCNode *)RCGHero RCGLevel:(CCNode *)RCGLevel
 {
-    
-    
+    [self gameOver];
     return TRUE;
 }
 
