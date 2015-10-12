@@ -17,6 +17,18 @@
 
 @implementation RCGObstacle
 
+#pragma mark - Scene init logic
+
+
+- (void) didLoadFromCCB
+{
+    self.topObject.physicsBody.collisionType = self.bottomObject.physicsBody.collisionType = @"RCGLevel";
+    self.topObject.physicsBody.sensor = self.bottomObject.physicsBody.sensor = YES;
+}
+
+
+#pragma mark - Position logic
+
 - (void) setupRandomPosition
 {
     CGFloat randomFloat = ((double)arc4random() / ARC4RANDOM_MAX);

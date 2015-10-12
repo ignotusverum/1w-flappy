@@ -11,7 +11,7 @@
 // Nodes
 #import "RCGObstacle.h"
 
-@interface RCGMainScene ()
+@interface RCGMainScene () <CCPhysicsCollisionDelegate>
 
 @property (nonatomic, weak) CCSprite * heroSprite;
 @property (nonatomic, weak) CCPhysicsNode * mainPhysicsNode;
@@ -32,16 +32,16 @@
 @implementation RCGMainScene
 
 
-#pragma - Scene init logic
+#pragma mark - Scene init logic
 
 
 - (void) didLoadFromCCB
 {
     self.userInteractionEnabled = YES;
+    self.mainPhysicsNode.collisionDelegate = self;
     
     self.groundNodesArray = @[self.ground1Node, self.ground2Node];
  
-
     self.obstacleNodesArray = [NSMutableArray new];
     [self spawnNewObstacles];
     [self spawnNewObstacles];
@@ -55,13 +55,15 @@
 {
     for (CCNode * groundNode in self.groundNodesArray) {
         groundNode.zOrder = RCGDrawingOrderGround;
+        groundNode.physicsBody.collisionType = @"RCGLevel";
     }
     
     self.heroSprite.zOrder = RCGDrawingOrderHero;
+    self.heroSprite.physicsBody.collisionType = @"RCGHero";
 }
 
 
-#pragma - Scene update logic
+#pragma mark - Scene update logic
 
 
 - (void) update:(CCTime)delta
@@ -151,6 +153,32 @@
         [self.heroSprite.physicsBody applyAngularImpulse:-4000.f * delta];
     }
 }
+
+
+#pragma mark - Collision delegate
+
+
+- (BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair typeA:(CCNode *)nodeA typeB:(CCNode *)nodeB
+{
+    NSLog(@"Game Over");
+    return TRUE;
+}
+
+
+- (BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair hero:(CCNode *)hero level:(CCNode *)level
+{
+    NSLog(@"Game Over");
+    return TRUE;
+}
+
+
+- (BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair RCGHero:(CCNode *)RCGHero RCGLevel:(CCNode *)RCGLevel
+{
+    
+    
+    return TRUE;
+}
+
 
 
 @end
