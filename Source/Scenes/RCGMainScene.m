@@ -158,24 +158,9 @@
 #pragma mark - Collision delegate
 
 
-- (BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair typeA:(CCNode *)nodeA typeB:(CCNode *)nodeB
-{
-    NSLog(@"Game Over");
-    return TRUE;
-}
-
-
-- (BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair hero:(CCNode *)hero level:(CCNode *)level
-{
-    NSLog(@"Game Over");
-    return TRUE;
-}
-
-
 - (BOOL) ccPhysicsCollisionBegin:(CCPhysicsCollisionPair *)pair RCGHero:(CCNode *)RCGHero RCGLevel:(CCNode *)RCGLevel
 {
-    
-    
+    NSLog(@"GAME OWER");
     return TRUE;
 }
 
